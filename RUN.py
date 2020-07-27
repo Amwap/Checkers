@@ -1,4 +1,6 @@
 #-*- coding: UTF-8 -*-
 
-class Board():
-    
+from board import Board
+from figures.checker import Checker
+from figures.queen import Queen
+
