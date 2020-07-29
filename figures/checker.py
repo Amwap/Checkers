@@ -1,17 +1,18 @@
 # coding: utf-8
 
-from figure import Figure
+from figures.figure import Figure
 
 class Checker(Figure):
-    def __init__(self, board, position):
+    def __init__(self, name=None, ico="·", team="neutral", location=None):
         Figure.__init__(self)
-        self.board = board
-        self.position = position
-        
+        self.name = name
+        self.ico = ico
+        self.algorithm = []
+        self.team = team
+        self.location = location #top bottom
 
-        self.name = "Checker"
-        self.ico = "o"   
-        self.algorithm = [(1,1), (-1,1), (-1,-1), (1,-1), ("point","smt?", "+1","from here"), (1,1), (-1,1)]
+        self.algorithm = [(1,1), (-1,1), (-1,-1), (1,-1), ("point","smt?", "+1","empty?","from here"), (1,1), (-1,1)]
 
     def algorithm(self):
-        
+        for point in self.algorithm:
+            pass

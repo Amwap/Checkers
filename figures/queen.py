@@ -1,8 +1,8 @@
 # coding: utf-8
 
-from figure import Figure
+from figures.figure import Figure
 
-class Checker(Figure):
+class Queen(Figure):
     def __init__(self):
         Figure.__init__(self)
         self.name = "Checker"
