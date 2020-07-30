@@ -5,8 +5,13 @@ import re
 
 
 class Board():
-    def __init__(self, matrix):
+    def __init__(self, matrix, figure_set):
         self.matrix = matrix
+        self.figure_set = figure_set
+        self.kill_set1 = []
+        self.kill_set2 = []
+        self.score1 = 0
+        self.score2 = 0
             
         
         '''self.matrix = [[None]*9,
@@ -22,7 +27,7 @@ class Board():
         '''
 
         def m(f1,f2):
-            return self.matrix[f1][f2].get_ico()
+            return self.matrix[f1][f2].get_coordinate()
 
         self.board = f"""
             8   {m(8,1)}  {m(8,2)}  {m(8,3)}  {m(8,4)}  {m(8,5)}  {m(8,6)}  {m(8,7)}  {m(8,8)}  
@@ -46,6 +51,8 @@ class Board():
         return  (tuple(t_string[0:2]), tuple(t_string[2:4]))#поля которые нужно поменять местами
 
 
+    def refresh(self):
+        print(self.board)
 
     def search(self, figure):
         temp_list = []

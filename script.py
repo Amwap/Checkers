@@ -11,14 +11,22 @@ class Script():
         self.uname1 = "Player 1"
         self.uname2 = "Player 2"
         self.matrix = [[None]*9]
+        self.figure_set = []
+
+        self.i = 0
+        self.j = 0
 
 
     def boardbuilder(self):
-        def fillinger(even, ico, uname):
+        self.j = 0
+
+        def fillinger(even=None, ico="·", uname="neutral",location=None):
+            self.j += 1; self.i = 0
             line = [None]
-            for i in range(8):
-                if (i%2 == 0) is even: line.append(FreeField())
-                else: line.append(Checker(name="checker", ico=ico, team=uname, location="top"))
+            for num in range(8):
+                self.i += 1
+                if (num%2 == 0) is even or even == None: line.append(FreeField())
+                else: line.append(Checker(name="checker", ico=ico, team=uname, location=location, matrix=self.matrix, coordinate=(self.i,self.j)))
             return line
 
         def longest_functions_name_in_this_code():
@@ -28,14 +36,14 @@ class Script():
             return line
 
 
-        self.matrix.append(fillinger(even=True, ico='☺',uname=self.uname1))
-        self.matrix.append(fillinger(even=False, ico='☺',uname=self.uname1))
-        self.matrix.append(fillinger(even=True, ico='☺',uname=self.uname1))
-        self.matrix.append(longest_functions_name_in_this_code())
-        self.matrix.append(longest_functions_name_in_this_code())
-        self.matrix.append(fillinger(even=False, ico='☻',uname=self.uname2))
-        self.matrix.append(fillinger(even=True, ico='☻',uname=self.uname2))
-        self.matrix.append(fillinger(even=False, ico='☻',uname=self.uname2))
+        self.matrix.append(fillinger(even=True, ico='☺',uname=self.uname1, location="bottom"))
+        self.matrix.append(fillinger(even=False, ico='☺',uname=self.uname1, location="bottom"))
+        self.matrix.append(fillinger(even=True, ico='☺',uname=self.uname1, location="bottom"))
+        self.matrix.append(fillinger())
+        self.matrix.append(fillinger())
+        self.matrix.append(fillinger(even=False, ico='☻',uname=self.uname2, location="top"))
+        self.matrix.append(fillinger(even=True, ico='☻',uname=self.uname2, location="top"))
+        self.matrix.append(fillinger(even=False, ico='☻',uname=self.uname2, location="top"))
 
 
 
@@ -48,7 +56,8 @@ class Script():
         self.uname2 = "2"
 
         self.boardbuilder()
-        self.board = Board(self.matrix)
+        self.board = Board(self.matrix, self.figure_set)
+        
 
 
 
