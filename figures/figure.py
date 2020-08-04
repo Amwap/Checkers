@@ -1,20 +1,21 @@
 # coding: utf-8
 
 class Figure():
-    def __init__(self, name=None, ico="·", team="neutral", location=None, matrix=None, coordinate=None):
+    def __init__(self, name=None, ico="·", team="neutral", location=None, matrix=None, position=None):
         self.name = name
         self.ico = ico
         self.algorithm = []
         self.team = team
+        self.move_list = []
         self.location = location #top bottom
-        self.coordinate = coordinate
+        self.position = position
         self.status = "live" #or die
 
 
     def reverse(self, algorithm):
         new_alg = []
         for i in algorithm:
-            if i[0] == "point":
+            if i[0] == 'point':
                 new_alg.append(i)
             else: new_alg.append((-i[0], -i[1])) 
         return new_alg
@@ -31,7 +32,10 @@ class Figure():
     def get_team(self):
         return self.team
 
-    def get_coordinate(self):
-        return self.coordinate
+    def get_position(self):
+        return self.position
+
+    def get_move_list(self):
+        return self.move_list
 
 

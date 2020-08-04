@@ -27,7 +27,7 @@ class Board():
         '''
 
         def m(f1,f2):
-            return self.matrix[f1][f2].get_coordinate()
+            return self.matrix[f1][f2].get_ico()
 
         self.board = f"""
             8   {m(8,1)}  {m(8,2)}  {m(8,3)}  {m(8,4)}  {m(8,5)}  {m(8,6)}  {m(8,7)}  {m(8,8)}  

@@ -25,14 +25,19 @@ class Script():
             line = [None]
             for num in range(8):
                 self.i += 1
-                if (num%2 == 0) is even or even == None: line.append(FreeField())
-                else: line.append(Checker(name="checker", ico=ico, team=uname, location=location, matrix=self.matrix, coordinate=(self.i,self.j)))
+                if (num%2 == 0) is even or even == None: line.append(FreeField(name="free", ico="·", team="free"))
+                else: 
+                    new = Checker(name="checker", ico=ico, team=uname, location=location, matrix=self.matrix, position=(self.j,self.i))
+                    line.append(new)
+                    self.figure_set.append(new)
+
             return line
 
         def longest_functions_name_in_this_code():
             line = [None]
             for i in range(8):
-                line.append(FreeField())
+                new = FreeField(name="free", ico="·", team="free")
+                line.append(new)
             return line
 
 
@@ -52,12 +57,20 @@ class Script():
         # self.uname1 = input("First user enter you'r name: ")
         # print('If you wanna start game with bot, enter "bot"')
         # self.uname2 = input("Second user, enter you'r name: ")
-        self.uname1 = "1"
-        self.uname2 = "2"
+        self.uname1 = "amwap"
+        self.uname2 = "bot"
 
         self.boardbuilder()
         self.board = Board(self.matrix, self.figure_set)
-        
+
+        # print(self.figure_set)
+        for figure in self.figure_set:
+            figure.searcher(figure.get_position())
+            print(figure.get_team())
+            print(figure.get_position())
+            print(figure.get_move_list())
+            print('--------------------')
+            # print(figure.move_list)
 
 
 
