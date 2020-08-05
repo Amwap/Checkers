@@ -5,6 +5,8 @@ from board import Board
 from figures.checker import Checker
 from figures.queen import Queen
 from figures.freefield import FreeField
+from vector import Point
+
 
 class Script():
     def __init__(self):
@@ -27,7 +29,7 @@ class Script():
                 self.i += 1
                 if (num%2 == 0) is even or even == None: line.append(FreeField(name="free", ico="·", team="free"))
                 else: 
-                    new = Checker(name="checker", ico=ico, team=uname, location=location, matrix=self.matrix, position=(self.j,self.i))
+                    new = Checker(name="checker", ico=ico, team=uname, location=location, matrix=self.matrix, position=Point(self.j,self.i))
                     line.append(new)
                     self.figure_set.append(new)
 
@@ -69,6 +71,7 @@ class Script():
             print(figure.get_team())
             print(figure.get_position())
             print(figure.get_move_list())
+            print(figure.location)
             print('--------------------')
             # print(figure.move_list)
 
@@ -77,3 +80,15 @@ class Script():
 Script().run()
 
 
+
+
+            # 8   ☻  ·  ☻  ·  ☻  ·  ☻  ·  
+            # 7   ·  ☻  ·  ☻  ·  ☻  ·  ☻  
+            # 6   ☻  ·  ☻  ·  ☻  ·  ☻  ·  
+            # 5   ·  ·  ·  ·  ·  ·  ·  ·  
+            # 4   ·  ·  ·  ·  ·  ·  ·  ·  
+            # 3   ·  ☺  ·  ☺  ·  ☺  ·  ☺
+            # 2   ☺  ·  ☺  ·  ☺  ·  ☺  ·
+            # 1   ·  ☺  ·  ☺  ·  ☺  ·  ☺
+
+            #     a  b  c  d  e  f  g  h

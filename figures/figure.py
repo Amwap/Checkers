@@ -1,5 +1,5 @@
 # coding: utf-8
-
+from vector import Point
 class Figure():
     def __init__(self, name=None, ico="·", team="neutral", location=None, matrix=None, position=None):
         self.name = name
@@ -15,9 +15,9 @@ class Figure():
     def reverse(self, algorithm):
         new_alg = []
         for i in algorithm:
-            if i[0] == 'point':
+            if i == 'next':
                 new_alg.append(i)
-            else: new_alg.append((-i[0], -i[1])) 
+            else: new_alg.append(Point(-i.x, -i.y)) 
         return new_alg
 
     def get_algorithm(self):

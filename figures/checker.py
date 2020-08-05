@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from figures.figure import Figure
+from vector import Point
 
 class Checker(Figure):
     def __init__(self, name=None, ico="·", team="neutral", location=None, matrix=None, position=None):
@@ -13,19 +14,20 @@ class Checker(Figure):
         self.position = position
         self.matrix = matrix
         self.priority = False
-        self.algorithm = [(1,1), (-1,1), (-1,-1), (1,-1), ("point",), (1,1), (-1,1)]
+        self.algorithm = [Point(1,1), Point(-1,1), Point(-1,-1), Point(1,-1),"next", Point(1,1), Point(1,-1)]
         
         if location == "top": 
             self.algorithm = self.reverse(self.algorithm)
         
 
-    def searcher(self, position): #Блят! да почему она не работает как надо?!
+    def searcher(self, position): # - Блят! да почему она не работает как надо?!
+                                  # - Потому, что ты перепутал Х с У долбоёб!
         temp_list = []
         point = False
         for stage in self.algorithm:
             
             
-            if stage[0] == "point":
+            if stage == "next":
                 point = True
                 if len(temp_list) != 0:
                     self.priority = True
@@ -33,28 +35,15 @@ class Checker(Figure):
                     return 'complite' 
                 continue            
 
-            if not (1 <= (self.position[0]+stage[0]) <= 8):  continue 
-            if not (1 <= (self.position[1]+stage[1]) <= 8):  continue 
+            if not (1 <= (self.position.x+stage.x) <= 8):  continue 
+            if not (1 <= (self.position.y+stage.y) <= 8):  continue 
             
-            
-
-
-            # if point == False:
-            #     field = self.matrix[self.position[0]+stage[0]][self.position[1]+stage[1]]
-            #     team = field.get_team()
-            #     if team != self.team and team != "free":
-            #         temp_list.append((self.position[0]+stage[0],self.position[1]+stage[1]))
-            
-
 
             if point == True:
-                # if self.location == 'top' and stage == (1, -1):
-                #     print(True)
-
-                field = self.matrix[self.position[0]+stage[0]][self.position[1]+stage[1]]
+                field = self.matrix[self.position.x+stage.x][self.position.y+stage.y]
                 team = field.get_team()
                 if field.get_team() == "free":
-                    temp_list.append((self.position[0]+stage[0],self.position[1]+stage[1]))
+                    temp_list.append(Point(self.position.x+stage.x,self.position.y+stage.y))
 
 
         self.move_list = temp_list
