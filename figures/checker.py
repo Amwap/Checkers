@@ -35,15 +35,15 @@ class Checker(Figure):
                     return 'complite' 
                 continue            
 
-            if not (1 <= (self.position.x+stage.x) <= 8):  continue 
-            if not (1 <= (self.position.y+stage.y) <= 8):  continue 
+            if not (1 <= (self.position.col+stage.col) <= 8):  continue 
+            if not (1 <= (self.position.row+stage.row) <= 8):  continue 
             
 
             if point == True:
-                field = self.matrix[self.position.x+stage.x][self.position.y+stage.y]
+                field = self.matrix[self.position.col+stage.col][self.position.row+stage.row]
                 team = field.get_team()
                 if field.get_team() == "free":
-                    temp_list.append(Point(self.position.x+stage.x,self.position.y+stage.y))
+                    temp_list.append(Point(self.position.col+stage.col,self.position.row+stage.row))
 
 
         self.move_list = temp_list

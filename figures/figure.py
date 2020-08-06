@@ -1,4 +1,6 @@
 # coding: utf-8
+
+
 from vector import Point
 class Figure():
     def __init__(self, name=None, ico="·", team="neutral", location=None, matrix=None, position=None):
@@ -17,7 +19,7 @@ class Figure():
         for i in algorithm:
             if i == 'next':
                 new_alg.append(i)
-            else: new_alg.append(Point(-i.x, -i.y)) 
+            else: new_alg.append(Point(-i.col, -i.row)) 
         return new_alg
 
     def get_algorithm(self):

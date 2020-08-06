@@ -3,8 +3,8 @@ from typing import List
 
 @dataclass
 class Point:
-    x: int = 0
-    y: int = 0
+    col: int = 0
+    row: int = 0
     
 
 
